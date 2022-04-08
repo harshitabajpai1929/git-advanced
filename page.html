@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+      <label for="id">ID:</label>
+      <input type="number" id="Id" required><br>
+      <br>
+      <label for="name">Name:</label>
+      <input type="text" id="name" required><br>
+      <br>
+      <label for="salary">Basic Sal:</label>
+      <input name="sal" type="number" id="salary" required><br>
+       <br>
+       <button onclick="AddEmployee()" id="addbtn" type="add">add</button>
+    <br>
+    <div id="Display">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Total Salary</th>
+            <th>Action</th>
+            </tr>
+          <tr></tr>
+          <td></td>
+        </table>
+      </div>
+    <script>
+        var employeearray=[];
+
+            function AddEmployee(){
+                html =
+        "<table><tr><th>ID</th><br><th>Name</th><br><th>Total Salary</th><br><th>Action</th></tr>";
+  
+     var tyid = document.getElementById('Id').value;
+      var tyname = document.getElementById('name').value;
+      var tysalary = document.getElementById('salary').value;
+      
+    
+        var item = {
+        TyID: tyid,
+        TyName: tyname,
+        TySalary: tysalary,
+      };
+
+      employeearray.push(item);
+       
+      employeearray.forEach((element , index) => {
+        html +=
+        
+         "<tr><td>" +
+          element.TyID +
+          "</td><td>" +
+          element.TyName +
+          "</td><td>" +
+          element.TySalary +
+         "</td><td><a href='link.js' style='color: black;' onclick='del(index)' class='delete'>Delete</a></td></tr>";
+         });
+      html += "</table>"
+      document.getElementById("Display").innerHTML = html;  
+    }
+     </script>
+</body>
+</html>
